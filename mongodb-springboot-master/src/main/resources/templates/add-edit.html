@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add / Edit Reservations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Reservation </h1>
+        </div>
+    </div>
+
+    <form th:action="@{/save-reservation}" th:object="${reservation}" method="post">
+        <input type="hidden" th:value="${reservation.id}" name="id"/>
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input th:field="*{fname}" type="text" class="form-control" id="fname">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}"></label>
+        </div>
+        
+         <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input th:field="*{lname}" type="text" class="form-control" id="lname">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}"></label>
+        </div>
+        
+         <div class="form-group">
+            <label for="email">Email:</label>
+            <input th:field="*{email}" type="text" class="form-control" id="email">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
+        </div>
+        
+         <div class="form-group">
+            <label for="mobile">Mobile:</label>
+            <input th:field="*{mobile}" type="number" class="form-control" id="mobile">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></label>
+        </div>
+        
+         <div class="form-group">
+            <label for="state">State:</label>
+            <input th:field="*{state}" type="text" class="form-control" id="state">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></label>
+        </div>
+        
+         <div class="form-group">
+            <label for="city">City:</label>
+            <input th:field="*{city}" type="text" class="form-control" id="city">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></label>
+        </div>
+        
+         <div class="form-group">
+           <!-- <label for="modificationTime">Modification Time:</label> --> 
+            <input th:value="${modTime}" name="modificationTime" type="hidden" class="form-control" id="modificationTime">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('modificationTime')}" th:errors="*{modificationTime}"></label>
+        </div>
+        
+        
+        
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input th:field="*{date}" type="text" class="form-control" id="date">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></label>
+        </div>
+        <a th:href="@{/reservations-ui}">
+            <button type="button" class="btn btn-danger">Cancel</button>
+        </a>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+</body>
+</html>
